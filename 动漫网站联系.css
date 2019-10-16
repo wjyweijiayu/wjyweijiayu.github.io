@@ -1,0 +1,259 @@
+@charset"utf-8";
+*{margin: 0;padding: 0;}
+ul,ol,li{list-style: none;}
+b,strong{font-weight: normal;}
+i,em{font-style: normal;}
+a{text-decoration: none;}
+h1,h2,h3,h4,h5,h6{font-size: 16px;font-weight: normal;}
+body{
+    background: url(../img/背景.gif);
+}
+.div0{
+    width: 1000px;
+    height: 60px;
+    background: black;
+    margin: 15px auto;
+    position: relative;
+    z-index: 10;
+}
+.div0 .ul2{width: 1000px;
+height: 50px;
+background: greenyellow;
+}
+.div0 .ul2 li{
+    width: 200px;
+    height: 25px;
+    float: left;
+    background: BLACK;
+    margin: 0 23px;
+    position: relative;
+    text-align: center;
+    color: white;
+    border: 1px solid greenyellow;
+    top: 12px;
+}
+ .ul3{
+    left: -25px;
+    position: absolute;
+    height: 0px;
+    overflow: hidden;
+}
+.ul2 .ul3 a{
+    width: 200px;
+    height: 20px;
+    float: left;
+    background: black;
+    margin: 0 25px;
+    border: 1px solid yellowgreen;
+    color: white;
+    text-align: center;
+}
+.ul3 a:hover{
+    background: pink;
+}
+.div0 .ul2 li:hover ul.ul3{
+    height: 100px;
+    transition: 0.5s;
+    
+}
+.div2{
+    width: 990px;
+    height: 376px;
+    background: blue;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    z-index: 5;
+}
+.div2 #ul1{
+    list-style: none;
+    position: absolute;
+    
+}
+ #ul1 li {
+    float: left;
+}
+.div3{
+    width: 990px;
+    height: 129px;
+    background: black;
+    margin: 0 auto;
+   
+}
+.div3 #ul2 li{
+    float: left;
+    margin:  6px;
+    position: relative;
+    width: 129px;
+    height: 129px;
+    background: black;
+}
+.div3 #ul2 li h2{
+    color: white;
+    text-align: center;
+ 
+}
+.div3 #ul2 li h3{
+    color: white;
+    text-align: center;
+    font-size: 12px;
+
+}
+/*width 129 height 69*/
+.div3 #ul2 li:hover{
+    background: greenyellow;
+    
+}
+.div3 #ul2 li img:hover{
+   
+    left: -10px;
+    width: 149px;
+    height: 89px;
+    position: absolute;
+}
+.div4{
+    width: 1000px;
+    height: 400px;
+    background: red;
+    margin: -14px auto;
+    background: black;
+}
+.div5,.div6,.div7,.div8{
+    width: 200px;
+    height: 300px;
+    background: green;
+    margin: 0 25px;
+    margin-top: 25px;
+    float: left;
+    position: relative;
+    background: url(../img/背景.gif);
+
+}
+.div4 h4{
+    color: white;
+}
+.div9{
+    width: 1000px;
+    height: 800px;
+    background: green;
+    margin: 0 auto;
+}
+#tab{
+width: 1000px;
+height: 50px;
+background: green;
+margin: 0 auto;
+}
+
+ #tab li{
+    width: 150px;
+    height: 50px;
+    background: url(../img/背景.gif);
+    color: white;
+    float: left;
+    margin: 0 80px;
+    text-align: center;
+    line-height: 50px;
+}
+#container{
+  position: relative;
+  margin: 0 auto;
+}
+#content1, #content2, #content3 {
+    width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+    position: absolute;
+  }
+  #tab1, #content1 {
+    background-color: #ffcc00;
+  }
+
+  #tab2, #content2 {
+    background-color: #ff00cc;
+  }
+
+  #tab3, #content3 {
+    background-color: #00ccff;
+  }
+ 
+    #employeeTable {
+        border-spacing: 1px;
+        background-color: black;
+        margin: 80px auto 10px auto;
+    }
+    
+    th,td {
+        background-color: white;
+    }
+  
+    #formDiv {
+        width: 250px;
+        border-style: solid;
+        border-width: 1px;
+        margin: 50px auto 10px auto;
+        padding: 10px;
+    }
+    
+    #formDiv input {
+        width: 100%;
+    }
+    
+    .word {
+        width: 40px;
+    }
+    
+    .inp {
+        width: 200px;
+    }
+ .wk{
+     width: 70px;
+     position: fixed;
+     top: 150px;
+     left: 0px;
+     background: green;
+     opacity: 0.6;
+ }
+ .wk div{
+   overflow: hidden;
+   background: greenyellow;
+ }
+ .wk div.collapsed{
+     height: 25px;
+ }
+ .wk div span{
+    display: block;
+	height: 25px;
+    line-height: 25px;
+    text-align: center;
+    color:black;
+	border-bottom: 1px solid #ddd  
+ }
+ .wk div a{
+     display: block;
+     color: white;
+     background: black;
+     text-align: center;
+     font-size: 12px;
+ }
+ .wk div a:hover{
+     background:yellowgreen;
+ }
+ #content2 #computer{
+     width: 500px;
+     height: 400px;
+     background: #ffcc00;
+     border: 1px solid blue;
+     margin: 25px auto;
+     text-align: center;
+ }
+ input[type="text1"]{
+     margin-top: 10px;
+     width: 290px;
+     height: 34px;
+ }
+ input[type="button"]{
+     width: 60px;
+     height: 60px;
+     margin: 5px;
+ }
