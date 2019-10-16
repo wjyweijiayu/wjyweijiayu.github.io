@@ -1,0 +1,400 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="./动漫网站联系.css">
+    <script type="text/javascript">
+        window.onload=function(){
+            var ul1=document.getElementById("ul1");
+            var img=document.getElementsByClassName("img1");
+            ul1.style.width=990*img.length+"px";
+            var li1=document.getElementsByClassName("li1");
+            var index=0;
+            /*导航界面*/
+ 
+            /*轮播图界面*/
+            li1[index].style.background="greenyellow";
+            for(var i=0;i<li1.length;i++){
+                var index=0;
+                li1[i].num=i;
+                li1[i].onclick=function(){
+                    clearInterval(timer);
+                    index=this.num;
+                   // ul1.style.left=-990*index+"px";  
+                    move(ul1,"left",-990*index,20,function(
+                    ){
+                        auto();   
+                    });
+                    style();
+                }
+            }
+            function move(obj, attr, target, speed, callback) {
+	        clearInterval(obj.timer);
+	        var current = parseInt(getStyle(obj, attr));
+	        if(current > target) {
+		    speed = -speed;
+	                             }
+	        obj.timer = setInterval(function() {
+		    var oldValue = parseInt(getStyle(obj, attr));
+		    var newValue = oldValue + speed;
+		   if((speed < 0 && newValue < target) || (speed > 0 && newValue > target)) {
+			newValue = target;
+		     }
+		   obj.style[attr] = newValue + "px";
+		  if(newValue == target) {
+			clearInterval(obj.timer);
+			callback && callback();
+		                          }
+                                                }, 30);
+                                                
+                                                             }
+          function getStyle(obj, name) {
+          if(window.getComputedStyle) {
+    return getComputedStyle(obj, null)[name];
+                                      }else {
+    return obj.currentStyle[name];
+                                           }
+                                       }
+            function style(){
+                if(index>li1.length-1){
+                    index=0;
+                    ul1.style.left=0;
+                }
+                for(var i=0;i<li1.length;i++)
+                li1[i].style.background="";
+                li1[index].style.background="greenyellow";
+                
+            }
+            auto();
+            var timer;
+            function auto(){
+                timer=setInterval(function(){
+                    index++;
+                    index%=img.length;
+                    move(ul1,"left",-990*index,20,function(){
+                        style();
+                    });              
+                },2000)   
+            }
+              
+
+
+
+
+              var tab=document.getElementsByClassName("ggg");
+              var alldiv=document.getElementsByClassName("kkk");
+              for( var i=0;i<tab.length;i++){
+                  index=0
+                  tab[i].num=i;
+                
+                   tab[i].onclick=function(){
+                       index=this.num;
+                       for(var i=0;i<tab.length;i++){
+                           alldiv[i].style.display="none";
+                       }
+                        alldiv[index].style.display="block"
+                   }
+              }
+              var tabb=document.getElementById("employeeTable");
+              var  alla=document.getElementsByClassName("allclass");
+              function delte1(){
+                  var tr=this.parentNode.parentNode;
+                  var title=tr.children[0].innerHTML;
+                  var flag = confirm("确认删除" + title + "吗?")
+				if(flag) {
+					tr.parentNode.removeChild(tr);
+                }
+				return false;
+              }
+              for(var i=0;i<alla.length;i++)
+              {
+                  alla[i].onclick=delte1;  
+              }
+              var sub=document.getElementById("addEmpButton");
+              sub.onclick=function(){
+                var childrentitile=document.getElementById("title").value;
+                var childrencontent=document.getElementById("content").value;
+               var newtr=document.createElement("tr");
+               newtr.innerHTML="<td>"+childrentitile+"</td>"+
+							"<td>"+childrencontent+"</td>"+
+							"<td><a href='javascript:;'>Delete</a></td>"
+                var a=newtr.getElementsByTagName("a")[0];
+                a.onclick=delte1;
+              var employeeTable=document.getElementById("employeeTable");
+              var tbody=employeeTable.getElementsByTagName("tbody")[0];
+              tbody.appendChild(newtr);    } ;         
+              
+              
+
+                var span=document.querySelectorAll(".span");
+                function hasClass(obj, cn) {
+                var reg = new RegExp("\\b" + cn + "\\b");
+                return reg.test(obj.className);}
+                function addClass(obj, cn) {
+                if(!hasClass(obj, cn)) {
+                obj.className += " " + cn;}}
+                function removeClass(obj, cn) {
+	            var reg = new RegExp("\\b" + cn + "\\b");
+	            obj.className = obj.className.replace(reg, "");}
+                function toggleClass(obj, cn) {
+	           if(hasClass(obj, cn)) {
+		        removeClass(obj, cn);
+	                } else {
+		        addClass(obj, cn);
+	                }
+                                              }
+               var first=span[0].parentNode;
+               for(var i=0;i<span.length;i++){
+                   span[i].onclick=function(){
+                       var dp=this.parentNode;
+                       var begin=dp.offsetHeight;
+                       toggleClass(dp,"collapsed");
+                       var end=dp.offsetHeight;
+                       dp.style.height=begin+"px";
+                       move(dp,"height",end,10,function(){
+                           dp.style.height="";
+                       })
+                       if(first!=dp && !hasClass(first,"collapsed"))
+                       { toggleClass(first,"collapsed");}
+                       first=dp;
+
+                   }
+               }; 
+               var buttonbutton=document.getElementById("submit111");
+               var span1=document.getElementById("span1");
+               buttonbutton.onclick=function(){
+                   var ooo=document.getElementById("namename").value;
+                      if(ooo==""){
+                     
+                       span1.innerHTML="不可以为空哦"
+                       return false;
+                      }
+                    else{
+                        return true;
+                    }
+               }
+                 
+        }
+        function test(btn){
+                var num=btn.value;
+                switch(num){
+                    case "=":
+                    document.getElementById("wjy").value= eval( document.getElementById("wjy").value);
+                    break;
+                    case "c":
+                    document.getElementById("wjy").value="";
+                    break;
+                    default:document.getElementById("wjy").value=document.getElementById("wjy").value+num;
+             
+                }
+        } 
+        </script>
+</head>
+<body>
+    <div class="div0">
+<ul class="ul2">
+<li>官方论坛
+    <ul class="ul3">
+        <a href="#">交流</a>
+        <a href="#">攻略</a>
+        <a href="#">反馈</a>
+    </ul>
+</li>
+<li>新闻公告
+        <ul class="ul3" >
+                <a href="#">公告</a>
+                <a href="#">活动</a>
+            </ul>
+</li>
+<li>游戏资料
+        <ul  class="ul3">
+                <a href="#">新手入门</a>
+                <a href="#">职业介绍</a>
+            </ul>
+</li>
+<li>精彩活动
+        <ul  class="ul3">
+                <a href="#">图标点亮</a>
+                <a href="#">CDKEY</a>
+            </ul>
+</li>
+</ul>
+    </div>
+    <div class="div2">
+        
+        <ul id="ul1">
+            <li><a href="#"><img class="img1" src="img/akito.jpg"></a></li>
+            <li><a href="#"><img class="img1" src="img/Berserk.jpg"></a></li>
+            <li><a href="#"><img class="img1" src="img/EVA.jpg"></a></li>
+            <li><a href="#"><img class="img1" src="img/Gintama.jpg"></a></li>
+            <li><a href="#"><img class="img1" src="img/SteinsGate.jpg"></a></li>
+            <li><a href="#"><img class="img1" src="img/SummerWars.jpg"></a></a></li>
+            <li><a href="#"><img class="img1" src="img/Unicorn.jpg"></a></li>
+            <li><a href="#"><img class="img1" src="img/akito.jpg"></a></li>
+        </ul>
+    </div>
+    <div class="div3">
+        <ul id="ul2"> 
+            <li class="li1"> 
+                <img src="img/akito_s.jpg">
+                <h2>银魂剧场版</h2>
+                <h3>永远的万事屋</h3>
+            </li>
+            <li class="li1"> 
+                <img src="img/Berserk_s.jpg">
+                <h2>石头门剧场版</h2>
+                <h3>负荷领域的既视感</h3>
+            </li>
+            <li class="li1">
+                 <img src="img/EVA_s.jpg">
+                 <h2>高达UC</h2>
+                 <h3>Gundam Unicorn</h3>
+                </li>
+            <li class="li1"> 
+                <img src="img/Gintama_s.jpg">
+                <h2>剑风传奇</h2>
+                <h3>黄金时代</h3>
+            </li>
+            <li class="li1">
+                 <img src="img/SteinsGate_s.jpg">
+                 <h2>夏日大作战</h2>
+                 <h3>Summer Wars</h3>
+                </li>
+            <li class="li1"> 
+                <img src="img/SummerWars_s.jpg">
+                <h2>亡国的阿基德</h2>
+                <h3>Code Geass</h3>
+            </li>
+            <li class="li1"> 
+                <img src="img/Unicorn_s.jpg">
+                <h2> 新EVA剧场版</h2>
+                <h3>  New Evangelion</h3>
+            </li>
+        </ul>
+    </div>
+    <!---news-->>
+    <div class="div4">
+    <div class="div5">
+        <ul ><img src="img/dongman1.jpg"></ul>
+        <h4>火之国木叶隐村宇智波一族的天才忍者，六道仙人长子因陀罗的转世者</h4>
+    </div>
+    <div class="div6">
+            <ul ><img src="img/dongman2.jpg"></ul>
+            <h4>风之国·砂隐村的第五代风影,因为至亲之人的背叛而导致性格变得冷酷无情、喜好杀戮 </h4>
+    </div>
+    <div class="div7">
+            <ul ><img src="img/dongman4.jpg"></ul>
+            <h4>火之国木叶隐村的忍者，四代目火影波风水门和漩涡玖辛奈之子，六道仙人次子阿修罗转世 </h4>
+    </div>
+    <div class="div8">
+            <ul ><img src="img/动漫3.jpg"></ul>
+            <h4>小李是个“笨鸟先飞”型的热血少年，性格单纯而又热血，一心想成为一名优秀的忍者，并一直为此努力奋斗。</h4>
+    </div>
+    </div>
+ <ul id="tab">
+  <li class="ggg" value="1">留言板块</li>
+  <li class="ggg" value="2">计算机板块</li>
+  <li class="ggg" value="3">图片板块</li>
+ </ul>
+         <div class="div9">     
+        <div id="container">
+        <div id="content1" class="kkk">
+                <table id="employeeTable">
+                        <tr>
+                            <th>title</th>
+                            <th>content</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        <tr>
+                            <td>没有主题</td>
+                            <td>内容随意</td>
+                            <td>
+                          <a href="#" class="allclass">Delete</a>
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="formDiv">
+                    <table>
+                            <tr>
+                                <td class="word">title: </td>
+                                <td class="inp">
+                                    <input type="text" name="title" id="title" />
+                                </td>
+                            </tr>
+                       
+                            <tr>
+                                <td class="word">content: </td>
+                                <td class="inp">
+                                    <input type="text" name="content" id="content" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" align="center">
+                                    <button id="addEmpButton">
+                                    Submit
+                                </button>
+                                </td>
+                            </tr>
+                        </table>
+                        </div>
+        </div>
+        <div id="content2" class="kkk" style="display: none">
+           <div id="computer">
+            <input type="text1" name="" id="wjy"  value="" /><br>
+            <input type="button" name="" id="btn" value="0" onclick="test(this)"/>
+            <input type="button" name="" id="" value="1"  onclick="test(this)"/>
+            <input type="button" name="" id="" value="2" onclick="test(this)"/>   
+            <input type="button" name="" id="" value="3" onclick="test(this)"/><br>
+            <input type="button" name="" id="" value="4"onclick="test(this)"/>
+            <input type="button" name="" id="" value="5"onclick="test(this)"/>
+            <input type="button" name="" id="" value="6"onclick="test(this)"/>
+            <input type="button" name="" id="" value="7"onclick="test(this)"/><br>
+            <input type="button" name="" id="" value="8"onclick="test(this)"/>
+            <input type="button" name="" id="" value="9"onclick="test(this)"/>
+            <input type="button" name="" id="" value="+"onclick="test(this)"/>
+            <input type="button" name="" id="" value="-"onclick="test(this)"/><br>
+            <input type="button" name="" id="" value="*"onclick="test(this)"/>
+            <input type="button" name="" id="" value="/"onclick="test(this)"/>
+            <input type="button" name="" id="" value="="onclick="test(this)"/>
+            <input type="button" name="" id="" value="c"onclick="test(this)"/>
+
+           </div>
+        </div>
+        <div id="content3" class="kkk"  style="display: none">
+            <input type="text" id="namename"/>
+            <input type="submit" id="submit111"/>
+            <span id="span1"></span>
+        </div> 
+    </div>
+</div>   
+</div>
+<div class="wk">
+<div>
+    <span class="span">动画</span>
+    <a href="#">特设</a>
+	<a href="#">综合</a>
+    <a href="#">短书</a>
+    <a href="#">NAM-3D</a>
+</div>
+<div class="collapsed">
+    <span class="span">番剧</span>
+    <a href="#">连载动画</a>
+    <a href="#">完结动画</a>
+    <a href="#">资讯</a>
+    <a href="#">官方延伸</a>
+    <a href="#">新番时间表</a>
+    <a href="#">番剧索引</a>
+</div>
+<div class="collapsed">
+    <span class="span">国创</span>
+    <a href="#">国创动漫</a>
+    <a href="#">布袋戏</a>
+    <a href="#">国产动画索引</a>
+    <a href="#">动态漫</a>
+</div>
+</div>
+</body>
+</html>
